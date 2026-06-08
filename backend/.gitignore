@@ -2,3 +2,9 @@ __pycache__/
 *.pyc
 .env
 venv/
+env/
+.venv
+
+# BUT INCLUDE models directory and pkl files
+!models/
+!models/*.pkl

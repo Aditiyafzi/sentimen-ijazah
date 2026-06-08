@@ -1,8 +1,13 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-import joblib, re
+import joblib, re, os, sys
 from pathlib import Path
+
+# Logger setup untuk Cloud Run
+import logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 try:
     from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
@@ -11,9 +16,19 @@ try:
 except ImportError:
     def stem(text): return text
 
+# Load models dengan error handling
 BASE  = Path(__file__).parent / "models"
-MODEL = joblib.load(BASE / "model_terbaik_final.pkl")
-TFIDF = joblib.load(BASE / "tfidf_vectorizer_final.pkl")
+try:
+    logger.info(f"Loading models from {BASE}")
+    MODEL = joblib.load(BASE / "model_terbaik_final.pkl")
+    TFIDF = joblib.load(BASE / "tfidf_vectorizer_final.pkl")
+    logger.info("✓ Models loaded successfully")
+except FileNotFoundError as e:
+    logger.error(f"✗ Model file not found: {e}")
+    sys.exit(1)
+except Exception as e:
+    logger.error(f"✗ Error loading models: {e}")
+    sys.exit(1)
 
 STOPWORDS = {
     "yang","di","dan","ke","dari","untuk","ini","itu","dengan","adalah",
@@ -38,6 +53,14 @@ app.add_middleware(
     allow_origins=["*"], allow_credentials=True,
     allow_methods=["*"], allow_headers=["*"],
 )
+
+# Startup event
+@app.on_event("startup")
+async def startup_event():
+    logger.info("=" * 50)
+    logger.info("Sentimen Ijazah API Starting Up")
+    logger.info(f"Environment: {os.getenv('ENV', 'development')}")
+    logger.info("=" * 50)
 
 class PredictRequest(BaseModel):
     text: str
