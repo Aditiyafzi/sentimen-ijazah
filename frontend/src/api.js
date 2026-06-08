@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const BASE = import.meta.env.VITE_API_URL || 'http://localhost:8000'
+const BASE = import.meta.env.VITE_API_URL || 'https://penilaian-sentimen-api-255173089522.asia-southeast1.run.app'
 const api  = axios.create({ baseURL: BASE, timeout: 15000 })
 
 export const predict      = (text) => api.post('/predict', { text })
