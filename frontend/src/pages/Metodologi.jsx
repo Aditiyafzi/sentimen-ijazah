@@ -88,7 +88,7 @@ const STEPS = [
       'Pengembangan antarmuka menggunakan React.js.',
       'Integrasi API Backend berbasis FastAPI.',
       'Visualisasi distribusi sentimen secara real-time.',
-      'Deploy: backend → Render, frontend → Vercel.',
+      'Deploy: backend → Google Cloud Run, frontend → Vercel.',
     ],
     output: 'Live Research Dashboard',
   },
