@@ -15,7 +15,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "npm install && vite build",
+    "build": "npm install && npx vite build",
     "preview": "vite preview"
   }
 }
