@@ -428,7 +428,7 @@ MIT License - Bebas digunakan untuk keperluan akademis dan komersial
 
 ## 🔗 Links
 
-- **Live Application:** https://sentimen-ijazah-git-main-nimexxs-projects.vercel.app
+- **Live Application:** https://sentimen-ijazah.vercel.app
 - **API Backend:** https://penilaian-sentimen-api-255173089522.asia-southeast1.run.app
 - **GitHub Repository:** https://github.com/Renohidayat/sentimen-ijazah
 - **Deployment Guide:** [DEPLOY.md](./DEPLOY.md)
