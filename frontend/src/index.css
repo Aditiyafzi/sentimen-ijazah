@@ -1,0 +1,225 @@
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+/* ── NVIDIA Design Tokens ── */
+:root{
+  /* Surfaces */
+  --bg:       #000000;
+  --bg2:      #0d0d0d;
+  --bg3:      #1a1a1a;
+  --bg-soft:  #f7f7f7;
+
+  /* Borders */
+  --border:         rgba(255,255,255,0.08);
+  --border2:        #5e5e5e;
+  --hairline:       #cccccc;
+
+  /* Text */
+  --text:     #ffffff;
+  --text2:    rgba(255,255,255,0.70);
+  --text3:    #898989;
+  --ink:      #1a1a1a;
+
+  /* NVIDIA Green accent */
+  --accent:   #76b900;
+  --accent2:  #94da32;
+  --accent-dk:#5a8d00;
+
+  /* Sentimen */
+  --neg:  #ef4444;
+  --pos:  #22c55e;
+  --net:  #3b82f6;
+
+  /* Shape — NVIDIA is angular, 2px max */
+  --radius:  2px;
+  --radius2: 2px;
+
+  /* Typography */
+  --font: 'Hanken Grotesk', 'Plus Jakarta Sans', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+
+  --shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+body{
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:#5e5e5e;border-radius:0}
+
+/* ── Card — sharp NVIDIA style ── */
+.card{
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius2);
+  padding: 24px;
+  transition: border-color .15s;
+}
+.card:hover{border-color:#5e5e5e}
+
+/* ── Metric card ── */
+.metric-card{
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius2);
+  padding: 20px 24px;
+  transition: border-color .15s;
+}
+.metric-card:hover{border-color:#5e5e5e}
+.metric-label{
+  font-size: 11px;
+  color: var(--text3);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: 8px;
+  font-family: var(--mono);
+}
+.metric-val{
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.1;
+}
+.metric-sub{
+  font-size: 12px;
+  color: var(--text3);
+  margin-top: 4px;
+  font-family: var(--mono);
+}
+
+/* ── Badge ── */
+.badge{
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 2px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-family: var(--mono);
+}
+.badge-neg{background:rgba(239,68,68,.15);color:var(--neg);border:1px solid rgba(239,68,68,.3)}
+.badge-pos{background:rgba(34,197,94,.15);color:var(--pos);border:1px solid rgba(34,197,94,.3)}
+.badge-net{background:rgba(59,130,246,.15);color:var(--net);border:1px solid rgba(59,130,246,.3)}
+
+/* ── Buttons ── */
+.btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 24px;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 15px;
+  transition: all .15s;
+  height: 44px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.btn-primary{
+  background: var(--accent);
+  color: #000000;
+  box-shadow: none;
+}
+.btn-primary:hover{background: var(--accent2)}
+.btn-primary:disabled{opacity:.4;cursor:not-allowed}
+
+/* ── Spinner ── */
+.spinner{
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(0,0,0,.2);
+  border-top-color: #000;
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── Section titles ── */
+.section-title{
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -.3px;
+  margin-bottom: 4px;
+}
+.section-sub{
+  font-size: 13px;
+  color: var(--text3);
+  margin-bottom: 24px;
+  font-family: var(--mono);
+}
+
+/* ── Tables ── */
+.table-wrap{overflow-x:auto;border-radius:0}
+table{width:100%;border-collapse:collapse}
+th{
+  background: var(--bg3);
+  color: var(--text3);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  padding: 11px 16px;
+  text-align: left;
+  font-family: var(--mono);
+  border-bottom: 1px solid #5e5e5e;
+}
+td{
+  padding: 11px 16px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+  color: var(--text2);
+}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(255,255,255,.03)}
+
+/* ── Grid helpers ── */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+
+/* ── NVIDIA corner accent (dekoratif) ── */
+.nvidia-corner{
+  position: relative;
+  overflow: hidden;
+}
+.nvidia-corner::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--accent);
+}
+
+/* ── Animations ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.fade-up{animation:fadeUp .3s ease both}
+
+/* ── Responsive ── */
+@media(max-width:900px){
+  .grid-4{grid-template-columns:1fr 1fr}
+  .grid-3{grid-template-columns:1fr 1fr}
+  .grid-2{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .grid-4,.grid-3,.grid-2{grid-template-columns:1fr}
+}
