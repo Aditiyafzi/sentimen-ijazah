@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import renoImage from '/public/reno.jpg'
 
 const ABSTRAK_ID = `Penelitian ini bertujuan menganalisis sentimen komentar YouTube terhadap isu ijazah Joko Widodo menggunakan metode Support Vector Machine (SVM) dengan kernel Radial Basis Function (RBF) dan representasi fitur TF-IDF Bigram. Data dikumpulkan dari 11 video YouTube pada 8 channel berita nasional menggunakan YouTube Data API v3, menghasilkan 2.783 komentar mentah yang setelah preprocessing menjadi 2.561 komentar bersih.
 
@@ -368,7 +369,7 @@ export default function Tentang() {
             {/* Profile row */}
             <div style={{ padding: '16px', display: 'flex', alignItems: 'center', gap: 14, borderBottom: `1px solid ${D.border2}` }}>
               <img
-                src="/reno.jpg"
+                src={renoImage}
                 alt="M. Reno Hidayat"
                 onError={e => {
                   e.target.style.display = 'none'
