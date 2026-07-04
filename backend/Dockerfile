@@ -9,5 +9,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy aplikasi dan models
 COPY . .
 
-# Cloud Run menggunakan port 8080 dan env variable PORT
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
+# Cloud Run / Railway menggunakan env variable PORT
+CMD uvicorn main:app --host 0.0.0.0 --port ${PORT:-8080}
